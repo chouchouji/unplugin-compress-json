@@ -1,122 +1,86 @@
-# unplugin-starter
+# @binbinji/unplugin-compress-json
 
-[![NPM version](https://img.shields.io/npm/v/unplugin-starter?color=a1b858&label=)](https://www.npmjs.com/package/unplugin-starter)
+一个用于压缩 JSON 文件的 unplugin 插件，支持 Vite、Webpack、Rollup 等主流构建工具。
 
-Starter template for [unplugin](https://github.com/unjs/unplugin).
+## 功能特性
 
-## Template Usage
+- 🗜️ **自动压缩** - 自动移除 JSON 文件中的空白字符和换行符
+- 🔧 **多构建工具支持** - 支持 Vite、Webpack、Rollup 等构建工具
+- ⚡ **零配置** - 开箱即用，无需额外配置
+- 🎯 **精确匹配** - 只处理 `.json` 文件，不影响其他资源
 
-To use this template, clone it down using:
-
-```bash
-npx degit unplugin/unplugin-starter my-unplugin
-```
-
-And do a global replacement of `unplugin-starter` with your plugin name.
-
-Then you can start developing your unplugin 🔥
-
-To test your plugin, run: `pnpm run dev`
-To release a new version, run: `pnpm run release`
-
-## Install
+## 安装
 
 ```bash
-npm i unplugin-starter
+# npm
+npm install @binbinji/unplugin-compress-json -D
+
+# yarn
+yarn add @binbinji/unplugin-compress-json -D
+
+# pnpm
+pnpm add @binbinji/unplugin-compress-json -D
 ```
 
-<details>
-<summary>Vite</summary><br>
+## 使用方法
+
+### Vite
 
 ```ts
-// vite.config.ts
-import Starter from 'unplugin-starter/vite'
+// vite.config.js
+import { defineConfig } from 'vite'
+import CompressJson from '@binbinji/unplugin-compress-json/vite'
 
 export default defineConfig({
   plugins: [
-    Starter({ /* options */ }),
+    CompressJson(),
   ],
 })
 ```
 
-Example: [`playground/`](./playground/)
-
-<br></details>
-
-<details>
-<summary>Rollup</summary><br>
-
-```ts
-// rollup.config.js
-import Starter from 'unplugin-starter/rollup'
-
-export default {
-  plugins: [
-    Starter({ /* options */ }),
-  ],
-}
-```
-
-<br></details>
-
-<details>
-<summary>Webpack</summary><br>
-
-```ts
-// webpack.config.js
-module.exports = {
-  /* ... */
-  plugins: [
-    require('unplugin-starter/webpack')({ /* options */ })
-  ]
-}
-```
-
-<br></details>
-
-<details>
-<summary>Nuxt</summary><br>
-
-```ts
-// nuxt.config.js
-export default defineNuxtConfig({
-  modules: [
-    ['unplugin-starter/nuxt', { /* options */ }],
-  ],
-})
-```
-
-> This module works for both Nuxt 2 and [Nuxt Vite](https://github.com/nuxt/vite)
-
-<br></details>
-
-<details>
-<summary>Vue CLI</summary><br>
+### Vue CLI
 
 ```ts
 // vue.config.js
+const CompressJson = require('@binbinji/unplugin-compress-json/webpack')
+
 module.exports = {
   configureWebpack: {
     plugins: [
-      require('unplugin-starter/webpack')({ /* options */ }),
+      CompressJson(),
     ],
   },
 }
 ```
 
-<br></details>
+## 工作原理
 
-<details>
-<summary>esbuild</summary><br>
+插件会在构建过程中自动检测所有 `.json` 文件，并移除其中的：
+- 空格
+- 制表符
+- 换行符
+- 其他空白字符
 
-```ts
-// esbuild.config.js
-import { build } from 'esbuild'
-import Starter from 'unplugin-starter/esbuild'
-
-build({
-  plugins: [Starter()],
-})
+**压缩前：**
+```json
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "这是一个示例"
+}
 ```
 
-<br></details>
+**压缩后：**
+```json
+{"name":"example","version":"1.0.0","description":"这是一个示例"}
+```
+
+## 注意事项
+
+- 插件只处理构建输出中的 `.json` 文件
+- 不会修改源代码文件
+- 适用于生产环境构建，可以减小打包体积
+
+## License
+
+[MIT](LICENSE)
