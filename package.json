@@ -1,0 +1,92 @@
+{
+  "name": "@binbinji/unplugin-compress-json",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "A plugin to compress json files",
+  "license": "MIT",
+  "homepage": "https://github.com/chouchouji/unplugin-compress-json#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chouchouji/unplugin-compress-json.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chouchouji/unplugin-compress-json/issues"
+  },
+  "keywords": [
+    "unplugin",
+    "vite",
+    "webpack",
+    "rollup",
+    "transform"
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./astro": "./dist/astro.js",
+    "./esbuild": "./dist/esbuild.js",
+    "./farm": "./dist/farm.js",
+    "./nuxt": "./dist/nuxt.js",
+    "./rollup": "./dist/rollup.js",
+    "./rspack": "./dist/rspack.js",
+    "./types": "./dist/types.js",
+    "./vite": "./dist/vite.js",
+    "./webpack": "./dist/webpack.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown -w",
+    "lint": "eslint .",
+    "play": "npm -C playground run dev",
+    "prepublishOnly": "npm run build",
+    "release": "bumpp && pnpm publish",
+    "start": "tsx src/index.ts",
+    "test": "vitest"
+  },
+  "peerDependencies": {
+    "rollup": "^3",
+    "vite": ">=3",
+    "webpack": "^4 || ^5"
+  },
+  "peerDependenciesMeta": {
+    "rollup": {
+      "optional": true
+    },
+    "vite": {
+      "optional": true
+    },
+    "webpack": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "unplugin": "^2.3.4"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.13.2",
+    "@types/node": "^22.15.21",
+    "bumpp": "^10.1.1",
+    "eslint": "^9.27.0",
+    "nodemon": "^3.1.10",
+    "rollup": "^4.41.0",
+    "tsdown": "^0.12.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.1.4",
+    "webpack": "^5.99.9"
+  }
+}

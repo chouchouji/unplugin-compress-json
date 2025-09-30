@@ -1,0 +1,22 @@
+import type { UnpluginFactory } from "unplugin";
+import type { Options } from "./types";
+import { createUnplugin } from "unplugin";
+import type { OutputAsset } from "rollup";
+
+export const unpluginFactory: UnpluginFactory<Options | undefined> = (
+  options
+) => ({
+  name: "unplugin-compress-json",
+  enforce: "post",
+  generateBundle(_: unknown, bundle: Record<string, OutputAsset>) {
+    for (const id in bundle) {
+      if (id.endsWith(".json") && typeof bundle[id].source === "string") {
+        bundle[id].source = bundle[id].source.replace(/\s+/g, "");
+      }
+    }
+  },
+});
+
+export const unplugin = /* #__PURE__ */ createUnplugin(unpluginFactory);
+
+export default unplugin;
