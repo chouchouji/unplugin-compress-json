@@ -1,7 +1,7 @@
 {
   "name": "@binbinji/unplugin-compress-json",
   "type": "module",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A plugin to compress json files",
   "license": "MIT",
   "homepage": "https://github.com/chouchouji/unplugin-compress-json#readme",
