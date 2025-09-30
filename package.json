@@ -21,12 +21,7 @@
   ],
   "exports": {
     ".": "./dist/index.js",
-    "./astro": "./dist/astro.js",
-    "./esbuild": "./dist/esbuild.js",
-    "./farm": "./dist/farm.js",
-    "./nuxt": "./dist/nuxt.js",
     "./rollup": "./dist/rollup.js",
-    "./rspack": "./dist/rspack.js",
     "./types": "./dist/types.js",
     "./vite": "./dist/vite.js",
     "./webpack": "./dist/webpack.js",
@@ -50,11 +45,9 @@
     "build": "tsdown",
     "dev": "tsdown -w",
     "lint": "eslint .",
-    "play": "npm -C playground run dev",
     "prepublishOnly": "npm run build",
     "release": "bumpp && pnpm publish",
-    "start": "tsx src/index.ts",
-    "test": "vitest"
+    "start": "tsx src/index.ts"
   },
   "peerDependencies": {
     "rollup": "^3",
@@ -86,7 +79,6 @@
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
-    "vitest": "^3.1.4",
     "webpack": "^5.99.9"
   }
 }
