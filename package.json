@@ -20,7 +20,9 @@
     "vite",
     "webpack",
     "rollup",
-    "transform"
+    "transform",
+    "json",
+    "compress"
   ],
   "exports": {
     ".": {
