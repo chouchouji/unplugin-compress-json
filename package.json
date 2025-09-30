@@ -12,6 +12,9 @@
   "bugs": {
     "url": "https://github.com/chouchouji/unplugin-compress-json/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "unplugin",
     "vite",
