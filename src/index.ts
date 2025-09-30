@@ -15,6 +15,21 @@ export const unpluginFactory: UnpluginFactory<Options | undefined> = (
       }
     }
   },
+  webpack(compiler) {
+    compiler.hooks.emit.tap('unplugin-compress-json', (compilation) => {
+      for (const name in compilation.assets) {
+        if (name.endsWith('.json')) {
+          const asset = compilation.assets[name];
+          const source = asset.source().toString();
+          const compressed = source.replace(/\s+/g, "");
+          compilation.assets[name] = {
+            source: () => compressed,
+            size: () => compressed.length
+          } as any;
+        }
+      }
+    });
+  }
 });
 
 export const unplugin = /* #__PURE__ */ createUnplugin(unpluginFactory);
